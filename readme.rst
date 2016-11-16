@@ -34,7 +34,7 @@ Add the export to update the inventory file location
 
     export ANSIBLE_INVENTORY=/opt/openstack-ansible/playbooks/inventory/dynamic_inventory.py
 
-If you are running the HA Proxy you should run the following playbook as well to enable the scaleio gateway port 9943
+If you are running the HA Proxy you should run the following playbook as well to enable the ScaleIO Gateway port 9943
 
 .. code-block:: bash
 
