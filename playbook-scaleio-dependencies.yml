@@ -21,7 +21,7 @@
       stat: path=/etc/apt/00apt-cacher-proxy.backup
       register: apt-proxy-cfg-file-backup
 
-    - name: Workaround #1 for LXC apt repo proxy for Oracle Java download fix
+    - name: Workaround 1 for LXC apt repo proxy for Oracle Java download fix
       copy: remote_src=True src=/etc/apt/apt.conf.d/00apt-cacher-proxy dest=/etc/apt/00apt-cacher-proxy.backup
       when: apt-proxy-cfg-file.stat.exists
 
