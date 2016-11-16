@@ -21,8 +21,12 @@
       stat: path=/etc/apt/00apt-cacher-proxy.backup
       register: apt_proxy_cfg_file_backup
 
-    - name: Workaround #1 for LXC apt repo proxy for Oracle Java download fix
+    - name: Workaround 1.1 for LXC apt repo proxy for Oracle Java download fix
       copy: remote_src=True src=/etc/apt/apt.conf.d/00apt-cacher-proxy dest=/etc/apt/00apt-cacher-proxy.backup
+      when: apt_proxy_cfg_file.stat.exists
+
+    - name: Workaround 1.2 for LXC apt repo proxy for Oracle Java download fix
+      file: path=/etc/apt/apt.conf.d/00apt-cacher-proxy state=absent
       when: apt_proxy_cfg_file.stat.exists
 
     - name: Install Oracle Java 8
