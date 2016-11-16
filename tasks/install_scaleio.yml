@@ -1,7 +1,8 @@
 ---
-- name: Upload package wrapper
+- name: Install ScaleIO Gateway
   hosts: "scaleio_gateway_server"
   gather_facts: true
   user: root
   tasks:
-  template: dest="/var/tmp/package_wrapper.sh" src="templates/package_wrapper.sh.j2" mode="0775" owner="root" group="root" force="yes"
+    - name: Upload package wrapper
+      template: dest="/var/tmp/package_wrapper.sh" src="templates/package_wrapper.sh.j2" mode="0775" owner="root" group="root" force="yes"
