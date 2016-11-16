@@ -47,14 +47,14 @@ Create the containers
     openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=scaleio_gateway_server
 
 
-
--------
-
-Install InfluxDB
+Install Oracle Java and other required packages
 
 .. code-block:: bash
 
-    openstack-ansible playbook-influx-db.yml
+    openstack-ansible playbook-scaleio-dependencies.yml
+
+-------
+
 
 Install Influx Telegraf
 
