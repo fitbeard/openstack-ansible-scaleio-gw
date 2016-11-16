@@ -13,6 +13,10 @@
     - name: Accept Java 8 License
       debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
+    - name: Workaround with LXC apt repo proxy for Java download fix
+      copy: src=/etc/apt/apt.conf.d/00apt-cacher-proxy dest=/etc/apt/00apt-cacher-proxy.backup
+      file: path=/etc/apt/apt.conf.d/00apt-cacher-proxy state=absent
+
     - name: Install Oracle Java 8
       apt: name={{item}} state=latest
       with_items:
@@ -20,7 +24,10 @@
         - ca-certificates
         - oracle-java8-set-default
 
-    - name: Install more packages
+    - name: Rollback workaround with LXC apt repo proxy
+      copy: src=/etc/apt/00apt-cacher-proxy.backup dest=/etc/apt/apt.conf.d/00apt-cacher-proxy
+
+    - name: Install other needed packages
       apt: name={{item}} state=latest
       with_items:
         - numactl
