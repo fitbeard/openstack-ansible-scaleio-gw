@@ -1,0 +1,17 @@
+---
+
+- name: Add haproxy config
+  hosts: haproxy
+  gather_facts: true
+  user: root
+  roles:
+    - role: "haproxy_server"
+      haproxy_service_configs:
+        - service:
+            haproxy_service_name: scaleio_gateway
+            haproxy_backend_nodes: "{{ groups['scaleio_gateway_server'] | default([]) }}"
+            haproxy_ssl: "{{ haproxy_ssl }}"
+            haproxy_port: 9943
+            haproxy_balance_type: tcp
+            haproxy_backend_options:
+              - "httpchk GET /"
