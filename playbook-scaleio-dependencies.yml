@@ -15,7 +15,6 @@
 
     - name: Workaround with LXC apt repo proxy for Java download fix
       copy: src=/etc/apt/apt.conf.d/00apt-cacher-proxy dest=/etc/apt/00apt-cacher-proxy.backup
-      file: path=/etc/apt/apt.conf.d/00apt-cacher-proxy state=absent
 
     - name: Install Oracle Java 8
       apt: name={{item}} state=latest
