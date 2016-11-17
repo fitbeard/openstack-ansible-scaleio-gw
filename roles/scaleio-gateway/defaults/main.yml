@@ -1,5 +1,5 @@
 ---
-scaleio_gateway_admin_password: 'Cluster1!'
+scaleio_gateway_admin_password: 'Cluster1123'
 scaleio_role_environment:
   - key: "GATEWAY_ADMIN_PASSWORD"
     value: "{{ scaleio_gateway_admin_password }}"
