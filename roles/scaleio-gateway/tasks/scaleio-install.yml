@@ -17,3 +17,6 @@
 
 - name: Wait for Tomcat to start
   wait_for: port=443
+
+- name: Change default Tomcat HTTPS port
+  lineinfile: dest=/opt/emc/scaleio/gateway/conf/catalina.properties regexp="^ssl.port=443" insertafter="^#ssl.port=443" line="ssl.port=9943"
