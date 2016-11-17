@@ -1,0 +1,6 @@
+scaleio_gateway_admin_password: 'Cluster1!'
+scaleio_role_environment:
+        - key: "MDM_IP"
+          value: "{{ scaleio_mdm_ips }}"
+        - key: "GATEWAY_ADMIN_PASSWORD"
+value: "{{ scaleio_gateway_admin_password }}"
