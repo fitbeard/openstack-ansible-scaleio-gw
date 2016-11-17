@@ -28,7 +28,7 @@ Copy the env.d and conf.d files into place
     cp etc/env.d/scaleio-gateway.yml /etc/openstack_deploy/env.d/
     cp etc/conf.d/scaleio-gateway.yml /etc/openstack_deploy/conf.d/
 
-Edit /etc/openstack_deploy/conf.d/scaleio-gateway.yml config depending on environment.
+Edit ``/etc/openstack_deploy/conf.d/scaleio-gateway.yml`` config depending on environment.
 
 Add the export to update the inventory file location
 
@@ -56,7 +56,7 @@ Install Oracle Java and other required packages
 
 Install ScaleIO Gateway
 
-You can change default gateway admin password set in defaults/main.yml by passing variable to playbook ``-e scaleio_gateway_admin_password=SecurePassword`` of for example putting it to in same config with rest of openstack-ansible passwords in /etc/openstack_deploy/user_secrets.yml
+You can change default gateway admin password set in ``defaults/main.yml`` by passing variable to playbook ``-e scaleio_gateway_admin_password=SecurePassword`` or putting it to the same config with rest of openstack-ansible passwords in ``/etc/openstack_deploy/user_secrets.yml``
 
 .. code-block:: bash
 
