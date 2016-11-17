@@ -24,4 +24,4 @@
 #  wait_for: port=443
 
 - name: Adding Tomcat jvmRoute ID
-  lineinfile: dest=/opt/emc/scaleio/gateway/conf/server.xml regexp="^<Engine name="Catalina" defaultHost="localhost">" line="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
+  lineinfile: dest=/opt/emc/scaleio/gateway/conf/server.xml regexp="^.*<Engine name="Catalina" defaultHost="localhost">" line="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
