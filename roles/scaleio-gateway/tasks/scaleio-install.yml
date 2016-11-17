@@ -14,3 +14,6 @@
 
 - name: Install ScaleIO Gateway package
   raw: "/var/tmp/package_wrapper.sh dpkg -i {{ package_file.files[0].path }}"
+
+- name: Wait for Tomcat to start
+  wait_for: port=443
