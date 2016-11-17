@@ -15,8 +15,8 @@
 - name: Install ScaleIO Gateway package
   raw: "/var/tmp/package_wrapper.sh dpkg -i {{ package_file.files[0].path }}"
 
-- name: Wait for Tomcat to start
-  wait_for: port=443
+#- name: Wait for Tomcat to start
+#  wait_for: port=443
 
 - name: Change default Tomcat HTTPS port
-  lineinfile: dest=/opt/emc/scaleio/gateway/conf/catalina.properties regexp="^ssl.port=443" insertafter="^#ssl.port=443" line="ssl.port=9943"
+  lineinfile: dest=/opt/emc/scaleio/gateway/conf/catalina.properties regexp="^http.port=80" line="http.port=9943"
