@@ -56,7 +56,7 @@ Install Oracle Java and other required packages
 
 Install ScaleIO Gateway
 
-
+You can change default gateway admin password set in defaults/main.yml by passing variable to playbook ``-e scaleio_gateway_admin_password=SecurePassword`` of for example putting it to in same config with rest of openstack-ansible passwords in /etc/openstack_deploy/user_secrets.yml
 
 .. code-block:: bash
 
