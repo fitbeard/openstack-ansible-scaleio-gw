@@ -3,6 +3,5 @@
   hosts: "scaleio_gateway_server"
   gather_facts: true
   user: root
-  tasks:
-    - name: Upload package wrapper
-      template: dest="/var/tmp/package_wrapper.sh" src="templates/package_wrapper.sh.j2" mode="0775" owner="root" group="root" force="yes"
+  roles:
+    - role: scaleio-gateway
