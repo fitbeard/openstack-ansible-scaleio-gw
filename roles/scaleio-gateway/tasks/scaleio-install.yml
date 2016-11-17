@@ -12,11 +12,16 @@
   register: package_file
   find: paths="/var/tmp/" patterns="*{{ file_glob_name }}*.deb"
 
+- name: Check if package is installed
+  command: dpkg-query -l emc-scaleio-gateway
+  register: deb_check
+
 - name: Install ScaleIO Gateway package
   raw: "/var/tmp/package_wrapper.sh dpkg -i {{ package_file.files[0].path }}"
+  when: deb_check.stdout.find('no packages found') != -1
 
 #- name: Wait for Tomcat to start
 #  wait_for: port=443
 
 - name: Adding Tomcat jvmRoute ID
-  lineinfile: dest=/opt/emc/scaleio/gateway/conf/server.xml regexp="^''<Engine name="Catalina" defaultHost="localhost">''" line="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
+  lineinfile: dest=/opt/emc/scaleio/gateway/conf/server.xml regexp="^<Engine name="Catalina" defaultHost="localhost">" line="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
