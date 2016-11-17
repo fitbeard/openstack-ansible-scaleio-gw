@@ -1,4 +1,6 @@
 ---
+file_glob_name: gateway
+
 scaleio_role_environment:
   - key: "GATEWAY_ADMIN_PASSWORD"
     value: "{{ scaleio_gateway_admin_password }}"
