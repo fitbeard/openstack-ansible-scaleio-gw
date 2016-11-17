@@ -1,6 +1,6 @@
 ScaleIO Gateway for OpenStack-Ansible
 #########################################
-:date: 2016-11-16
+:date: 2016-11-17
 :tags: openstack, ansible
 :category: \*openstack, \*nix
 
@@ -28,6 +28,8 @@ Copy the env.d and conf.d files into place
     cp etc/env.d/scaleio-gateway.yml /etc/openstack_deploy/env.d/
     cp etc/conf.d/scaleio-gateway.yml /etc/openstack_deploy/conf.d/
 
+Edit /etc/openstack_deploy/conf.d/scaleio-gateway.yml config depending on environment.
+
 Add the export to update the inventory file location
 
 .. code-block:: bash
@@ -46,21 +48,21 @@ Create the containers
 
     openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=scaleio_gateway_server
 
-
 Install Oracle Java and other required packages
 
 .. code-block:: bash
 
     openstack-ansible playbook-scaleio-dependencies.yml
 
--------
+Install ScaleIO Gateway
 
 
-Install Influx Telegraf
 
 .. code-block:: bash
 
-    openstack-ansible playbook-influx-telegraf.yml --forks 100
+    openstack-ansible openstack-ansible playbook-scaleio-install.yml
+
+------
 
 Install grafana
 
