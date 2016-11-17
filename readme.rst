@@ -30,6 +30,8 @@ Copy the env.d and conf.d files into place
 
 Edit ``/etc/openstack_deploy/conf.d/scaleio-gateway.yml`` config depending on environment.
 
+Put ScaleIO Gateway deb package in ``/opt/files`` or other location defined in ``scaleio_install_file_location`` variable in ``defaults/main.yml``.
+
 Add the export to update the inventory file location
 
 .. code-block:: bash
