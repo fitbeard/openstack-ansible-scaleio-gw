@@ -1,6 +1,6 @@
 ScaleIO Gateway for OpenStack-Ansible
 #########################################
-:date: 2016-11-17
+:date: 2016-11-18
 :tags: openstack, ansible
 :category: \*openstack, \*nix
 
