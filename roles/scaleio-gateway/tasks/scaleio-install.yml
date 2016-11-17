@@ -1,5 +1,4 @@
 ---
 
-  tasks:
-    - name: Upload package wrapper
-      template: dest="/var/tmp/package_wrapper.sh" src="templates/package_wrapper.sh.j2" mode="0775" owner="root" group="root" force="yes"
+  - name: Upload package wrapper
+    template: dest="/var/tmp/package_wrapper.sh" src="templates/package_wrapper.sh.j2" mode="0775" owner="root" group="root" force="yes"
