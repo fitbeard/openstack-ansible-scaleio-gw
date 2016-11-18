@@ -1,6 +1,6 @@
 ---
 
-- name: Add haproxy config
+- name: Add Ha Proxy config for ScaleIO Gateway
   hosts: haproxy
   gather_facts: true
   user: root

@@ -62,4 +62,4 @@ You can change default gateway admin password set in ``defaults/main.yml`` by pa
 
 .. code-block:: bash
 
-    openstack-ansible openstack-ansible playbook-scaleio-install.yml
+    openstack-ansible playbook-scaleio-install.yml
