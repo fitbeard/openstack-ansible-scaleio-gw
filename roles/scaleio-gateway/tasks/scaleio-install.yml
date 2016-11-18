@@ -25,6 +25,11 @@
   when: deb_check.stdout.find('no packages found') != -1
 
 - name: Adding Tomcat jvmRoute ID
-  replace: dest=/opt/emc/scaleio/gateway/conf/server.xml regexp='^.*<Engine name="Catalina" defaultHost="localhost">' replace="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
+  replace: dest={{ scaleio_tomcat_properties_file }} regexp='^.*<Engine name="Catalina" defaultHost="localhost">' replace="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
   notify:
   - Restart ScaleIO Gateway
+
+- name: Adding MDM IP addresses
+  replace: dest={{ scaleio_gateway_user_properties_file }} regexp='^.*mdm.ip.addresses=$' replace="mdm.ip.addresses=10.76.60.50,10.76.40.11,10.76.80.55"
+  #notify:
+  #- Restart ScaleIO Gateway
