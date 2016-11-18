@@ -2,6 +2,3 @@
 
 - name: Restart ScaleIO Gateway
   service: name=scaleio-gateway state=restarted
-
-- name: Restart HAProxy
-  service: name=haproxy state=restarted

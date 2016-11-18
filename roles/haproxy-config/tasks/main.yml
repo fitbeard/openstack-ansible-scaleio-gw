@@ -1,0 +1,11 @@
+---
+
+- name: Deploy HAProxy configuration files
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/haproxy/conf.d/{{ item }}"
+    owner: "root"
+    group: "root"
+  with_items:
+    - scaleio_gateway
+  notify: Restart HAProxy

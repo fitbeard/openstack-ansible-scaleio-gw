@@ -1,0 +1,13 @@
+frontend scaleio_gateway-front
+bind *:9943
+    option tcplog
+    mode tcp
+    default_backend scaleio_gateway-back
+
+backend scaleio_gateway-back
+    mode tcp
+    balance source
+    option ssl-hello-chk
+{% for host_name in groups['scaleio_gateway_server'] %}
+    server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:9943 check port 9943 inter 12000 rise 2 fall 2
+{% endfor %}
