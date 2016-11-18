@@ -5,4 +5,8 @@
   gather_facts: true
   user: root
   roles:
-    - role: "haproxy-config"
+  - { role: "haproxy-config" }
+  vars_files:
+  - "/opt/openstack-ansible/playbooks/vars/configs/haproxy_config.yml"
+  vars:
+    is_metal: "{{ properties.is_metal|default(false) }}"
