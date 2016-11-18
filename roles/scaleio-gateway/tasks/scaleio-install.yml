@@ -20,8 +20,11 @@
   raw: "/var/tmp/package_wrapper.sh dpkg -i {{ package_file.files[0].path }}"
   when: deb_check.stdout.find('no packages found') != -1
 
-#- name: Wait for Tomcat to start
-#  wait_for: port=443
+- name: Wait for Tomcat to start
+  wait_for: port=80 delay=10
+  when: deb_check.stdout.find('no packages found') != -1
 
 - name: Adding Tomcat jvmRoute ID
   lineinfile: dest=/opt/emc/scaleio/gateway/conf/server.xml regexp="^.*<Engine name="Catalina" defaultHost="localhost">" line="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
+  notify:
+  - Restart ScaleIO Gateway
