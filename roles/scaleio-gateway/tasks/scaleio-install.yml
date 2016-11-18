@@ -25,6 +25,6 @@
   when: deb_check.stdout.find('no packages found') != -1
 
 - name: Adding Tomcat jvmRoute ID
-  lineinfile: dest=/opt/emc/scaleio/gateway/conf/server.xml state=present regexp='^.*<Engine name="Catalina" defaultHost="localhost">' line="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
+  replace: dest=/opt/emc/scaleio/gateway/conf/server.xml state=present regexp='^.*<Engine name="Catalina" defaultHost="localhost">' replace="<Engine name="Catalina" defaultHost="localhost" jvmRoute="{{ ansible_hostname }}">"
   notify:
   - Restart ScaleIO Gateway
