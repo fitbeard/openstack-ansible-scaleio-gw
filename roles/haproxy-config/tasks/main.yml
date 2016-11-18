@@ -8,4 +8,9 @@
     group: "root"
   with_items:
     - scaleio_gateway
+
+- name: Regenerate HAProxy configuration
+  assemble:
+    src: "/etc/haproxy/conf.d"
+    dest: "/etc/haproxy/haproxy.cfg"
   notify: Restart HAProxy

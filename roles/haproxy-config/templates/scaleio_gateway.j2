@@ -1,20 +1,28 @@
 frontend scaleio_gateway-front-1
-bind {{ external_lb_vip_address }}:9943 ssl crt /etc/ssl/private/haproxy.pem ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
-    option tcplog
-    mode tcp
+    bind {{ external_lb_vip_address }}:9943 ssl crt /etc/ssl/private/haproxy.pem ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+    option httplog
+    option forwardfor except 127.0.0.0/8
+    option http-server-close
+    reqadd X-Forwarded-Proto:\ https
+    mode http
     default_backend scaleio_gateway-back
 
 frontend scaleio_gateway-front-2
-bind {{ internal_lb_vip_address }}:9943 ssl crt /etc/ssl/private/haproxy.pem ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
-    option tcplog
-    mode tcp
+    bind {{ internal_lb_vip_address }}:9943 ssl crt /etc/ssl/private/haproxy.pem ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+    option httplog
+    option forwardfor except 127.0.0.0/8
+    option http-server-close
+    reqadd X-Forwarded-Proto:\ https
+    mode http
     default_backend scaleio_gateway-back
 
 backend scaleio_gateway-back
-        option httpchk OPTIONS /
-        option forwardfor
-        option http-server-close
-        cookie JSESSIONID prefix
+    mode http
+    option forwardfor
+    option httplog
+    option httpchk GET /
+    option http-server-close
+    cookie JSESSIONID prefix
 {% for host_name in groups['scaleio_gateway_server'] %}
-    server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:80 cookie {{ host_name }} check inter 5000
+    server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:9943 cookie {{ host_name }} check inter 5000 ssl verify none
 {% endfor %}

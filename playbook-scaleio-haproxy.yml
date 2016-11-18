@@ -1,12 +1,8 @@
 ---
 
 - name: Add HAProxy config for ScaleIO Gateway
-  hosts: haproxy
+  hosts: haproxy_hosts
   gather_facts: true
   user: root
   roles:
-  - { role: "haproxy-config" }
-  vars_files:
-  - "/opt/openstack-ansible/playbooks/vars/configs/haproxy_config.yml"
-  vars:
-    is_metal: "{{ properties.is_metal|default(false) }}"
+    - role: "haproxy-config"
