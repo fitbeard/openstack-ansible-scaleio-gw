@@ -30,6 +30,6 @@
   - Restart ScaleIO Gateway
 
 - name: Adding MDM IP addresses
-  replace: dest={{ scaleio_gateway_user_properties_file }} regexp='^.*mdm.ip.addresses=$' replace="mdm.ip.addresses=10.76.60.50,10.76.40.11,10.76.80.55"
-  #notify:
-  #- Restart ScaleIO Gateway
+  replace: dest={{ scaleio_gateway_user_properties_file }} regexp='^.*mdm.ip.addresses=' replace="mdm.ip.addresses=10.76.60.56,10.76.40.16,10.76.80.56"
+  notify:
+  - Restart ScaleIO Gateway
