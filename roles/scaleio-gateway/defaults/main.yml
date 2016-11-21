@@ -6,11 +6,13 @@ scaleio_role_environment:
   - key: "GATEWAY_ADMIN_PASSWORD"
     value: "{{ scaleio_gateway_admin_password }}"
 
-scaleio_gateway_admin_password: 'Cluster123'
+scaleio_gateway_admin_password: 'Scaleio123'
 
 scaleio_install_file_location: "/opt/files"
 
 scaleio_tomcat_properties_file: '/opt/emc/scaleio/gateway/conf/server.xml'
+
+scaleio_catalina_properties_file: '/opt/emc/scaleio/gateway/conf/catalina.properties'
 
 scaleio_gateway_user_properties_file: '/opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties'
 
