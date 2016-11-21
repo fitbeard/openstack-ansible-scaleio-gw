@@ -42,10 +42,10 @@
   notify:
   - Restart ScaleIO Gateway
 
-  - name: Automatically trust MDM certificates
-    replace: dest={{ scaleio_gateway_user_properties_file }} regexp='^.*security.bypass_certificate_check=.*' replace="security.bypass_certificate_check=true"
-    notify:
-    - Restart ScaleIO Gateway
+- name: Automatically trust MDM certificates
+  replace: dest={{ scaleio_gateway_user_properties_file }} regexp='^.*security.bypass_certificate_check=.*' replace="security.bypass_certificate_check=true"
+  notify:
+  - Restart ScaleIO Gateway
 
 - name: Remove package wrapper
   file: path="/var/tmp/package_wrapper.sh" state=absent
