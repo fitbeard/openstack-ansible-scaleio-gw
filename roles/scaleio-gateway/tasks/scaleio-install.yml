@@ -20,7 +20,7 @@
 
 - name: Install ScaleIO Gateway package
   raw: "/var/tmp/package_wrapper.sh dpkg -i {{ package_file.files[0].path }}"
-  #comment when You need to set new GATEWAY_ADMIN_PASSWORD
+  #comment below when You need to set new GATEWAY_ADMIN_PASSWORD
   when: deb_check.rc == 1
 
 - name: Wait for Tomcat to start

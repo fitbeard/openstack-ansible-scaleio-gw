@@ -50,12 +50,6 @@ Create the containers
 
     openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=scaleio_gateway_server
 
-Install Oracle Java and other required packages
-
-.. code-block:: bash
-
-    openstack-ansible playbook-scaleio-dependencies.yml
-
 Install ScaleIO Gateway
 
 You can change default gateway admin password set in ``defaults/main.yml`` by passing variable to playbook ``-e scaleio_gateway_admin_password=SecurePassword`` or putting it to the same config with rest of openstack-ansible passwords in ``/etc/openstack_deploy/user_secrets.yml``

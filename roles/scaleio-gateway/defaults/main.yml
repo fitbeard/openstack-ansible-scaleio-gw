@@ -1,21 +1,21 @@
 ---
 
+scaleio_gateway_admin_password: 'Scaleio123'
+
+scaleio_mdm1_ip: '172.29.244.11'
+
+scaleio_mdm2_ip: '172.29.244.12'
+
+scaleio_install_file_location: "/opt/files"
+
 file_glob_name: gateway
 
 scaleio_role_environment:
   - key: "GATEWAY_ADMIN_PASSWORD"
     value: "{{ scaleio_gateway_admin_password }}"
 
-scaleio_gateway_admin_password: 'Scaleio123'
-
-scaleio_install_file_location: "/opt/files"
-
 scaleio_tomcat_properties_file: '/opt/emc/scaleio/gateway/conf/server.xml'
 
 scaleio_catalina_properties_file: '/opt/emc/scaleio/gateway/conf/catalina.properties'
 
 scaleio_gateway_user_properties_file: '/opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties'
-
-scaleio_mdm1_ip: '172.29.244.11'
-
-scaleio_mdm2_ip: '172.29.244.12'
