@@ -19,13 +19,9 @@ frontend scaleio_gateway-front-2
 backend scaleio_gateway-back
     mode http
     option forwardfor
-    option httplog
-    option httpchk GET /
+    option httpchk OPTIONS /
     option http-server-close
     cookie JSESSIONID prefix
 {% for host_name in groups['scaleio_gateway_server'][0] %}
-    server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:9943 cookie {{ host_name }} check inter 5000 ssl verify none
+    server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:9943 cookie {{ host_name }} ssl verify none check inter 5000
 {% endfor %}
-{% for host_name in groups['scaleio_gateway_server'][1:] %}
-    server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:9943 cookie {{ host_name }} check inter 5000 ssl verify none backup
-{% endfor %
