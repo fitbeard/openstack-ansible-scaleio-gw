@@ -25,6 +25,6 @@ backend scaleio_gateway-back
 {% for host_name in [groups['scaleio_gateway_server'][0]] %}
     server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:9943 cookie {{ host_name }} ssl verify none check inter 5000
 {% endfor %}
-{% for host_name in [groups['scaleio_gateway_server'][1]] %}
+{% for host_name in groups['scaleio_gateway_server'][1:] %}
     server {{ host_name }} {{ hostvars[host_name]['ansible_ssh_host'] }}:9943 cookie {{ host_name }} ssl verify none check inter 5000 backup
 {% endfor %}
