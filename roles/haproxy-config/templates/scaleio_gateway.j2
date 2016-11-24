@@ -19,7 +19,7 @@ frontend scaleio_gateway-front-2
 backend scaleio_gateway-back
     mode http
     option forwardfor
-    option httpchk OPTIONS /
+    option httpchk /api/version
     option http-server-close
     cookie JSESSIONID prefix
 {% for host_name in [groups['scaleio_gateway_server'][0]] %}
