@@ -1,7 +1,7 @@
 ---
 
 - name: Install ScaleIO Gateway
-  hosts: "scaleio_gateway_server"
+  hosts: "scaleio_gateway"
   gather_facts: true
   user: root
   roles:

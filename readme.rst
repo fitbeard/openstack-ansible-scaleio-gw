@@ -1,8 +1,9 @@
 ScaleIO Gateway for OpenStack-Ansible
 #########################################
-:date: 2016-11-24
+:date: 2017-02-02
 :tags: openstack, ansible
 :category: \*openstack, \*nix
+:OS: Ubuntu 14.0.4, 16.04
 
 
 About this repository
@@ -48,7 +49,7 @@ Create the containers
 
 .. code-block:: bash
 
-    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=scaleio_gateway_server
+    openstack-ansible /opt/openstack-ansible/playbooks/lxc-containers-create.yml -e container_group=scaleio_gateway
 
 Install ScaleIO Gateway
 

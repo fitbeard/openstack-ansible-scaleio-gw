@@ -10,7 +10,7 @@ container_skel:
     belongs_to:
     - scaleio-gw_containers
     contains:
-      - scaleio_gateway_server
+      - scaleio_gateway
     properties:
       service_name: scaleio
       container_release: trusty
