@@ -9,7 +9,7 @@ ScaleIO Gateway for OpenStack-Ansible
 About this repository
 ---------------------
 
-This set of playbooks will deploy ScaleIO Gateway in LXC containers to get high availability service in OpenStack Cinder and Nova.
+This set of playbooks will deploy ScaleIO Gateway in LXC containers to get high availability in OpenStack Cinder and Nova.
 
 Process
 -------
