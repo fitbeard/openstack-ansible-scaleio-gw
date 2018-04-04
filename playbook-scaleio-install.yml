@@ -5,4 +5,4 @@
   gather_facts: true
   user: root
   roles:
-    - role: scaleio-gateway12
+    - role: scaleio-gateway
